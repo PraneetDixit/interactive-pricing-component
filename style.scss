@@ -1,0 +1,319 @@
+/***************************************Color variables*****************************************/
+
+$white: hsl(0, 0%, 100%);
+$mainBackground: hsl(230, 100%, 99%);
+$darkCyan: #0ed8c5;
+$darkBlue: hsl(227, 35%, 25%);
+$gray: #7e828e;
+
+/*******************************************Flex**********************************************/
+
+@mixin flex($dir: row, $jus: flex-start, $alg: stretch){
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jus;
+    align-items: $alg;
+}
+
+/*****************************************Global*************************************/
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    @include flex(column,flex-start,center);
+    min-height: 100vh;
+    background-image: url(images/bg-pattern.svg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% 56.25%;
+    background-color: $mainBackground;
+    font-family: "Manrope", sans-serif;
+}
+
+/**************************************Header***********************************/
+
+header{
+    padding: 4.75rem 0rem 4.75rem 0rem;
+    background-image: url(images/pattern-circles.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    h1, h4{
+        text-align: center;
+    }
+    
+    h1{
+        color: $darkBlue;
+        font-size: 26px;
+        margin-bottom: 7.5px;
+    }
+    
+    h4{
+        color: $gray;
+        font-size: 15px;
+    }
+}
+
+/**********************************Main content***********************************/
+
+main{
+    background-color: $white;
+    padding: 2rem 0rem;
+    border-radius: 10px;
+    width: min(540px, 90vw);
+    flex-shrink: 0;
+    box-shadow: 0px 4px 15px 5px #eaeefb;
+    margin-bottom: 3rem;
+    
+    hr{
+        border: none;
+        border-top: 1.5px solid darken(#f5f5f7, 5%);
+    }
+}
+
+/********************************Data*********************************/
+
+#top{
+    @include flex(row, space-between, center);
+    padding: 0rem 3rem;
+    flex-wrap: wrap;
+    
+    #views, #price{
+        font-size: 15px;
+        color: $gray;
+        flex-basis: 50%;
+        flex-shrink: 0;
+    }
+    
+    #views{
+        letter-spacing: 1px;
+    }
+    
+    #price{
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    #basePrice{
+        font-size: 40px;
+        color: $darkBlue;
+    }
+    
+}
+
+/*****************************************Slider********************************************/
+
+#rangeContainer{
+    padding: 1.75rem 0rem;
+    flex-grow: 1;
+    #priceRange{
+        -webkit-appearance: none;
+        width: 100%;
+        background: hsl(224, 65%, 95%);
+        outline: none;
+        border-radius: 4px;
+    
+        &::-webkit-slider-runnable-track {
+            background: transparent;
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        &::-webkit-slider-thumb {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: $darkCyan;
+            background-image: url(images/icon-slider.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -14.5px;
+            box-shadow: 0px 13px 28px 5px hsl(174, 77%, 80%);
+            
+            &:hover{
+                background-color: lighten($darkCyan, 10%);
+                cursor: grab;
+            }
+            
+            &:active{
+                background-color: darken($darkCyan, 10%);
+                cursor: grabbing;
+            }
+        }
+    }
+}
+
+/**********************************Pricing************************************/
+
+#pricing{
+    @include flex();
+    padding: 1.5rem 0rem 2rem 0rem;
+    
+    .pricingOption{
+        flex-shrink: 0;
+        width: calc((100% - 40px) / 2);
+        font-size: 13px;
+        color: #a7abb8;
+        padding: 0px 0px 0px 15px;
+        
+        &:nth-child(1){
+            text-align: right;
+            padding: 0px 15px 0px 0px;
+        }
+        
+        span{
+            display: inline-block;
+            color: hsl(15, 100%, 70%);
+            background-color: hsl(14, 92%, 95%);
+            font-weight: 800;
+            font-size: 11px;
+            padding: 1px 3px 1px 3px;
+            border-radius: 7.5px;
+        }
+    }
+}
+
+/****************************************Toggle button*********************************************/
+
+#toggle{
+    width: 40px;
+    background-color: hsl(223, 50%, 87%);
+    height: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+
+    #togButton{
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        border-radius: 50%;
+        background-color: $white;
+        top: 3px;
+        transform: translateX(3px);
+        transition: transform 0.25s ease-in-out;
+        z-index: 1;
+    }
+
+    #tog{
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none;
+        position: absolute;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    #bg{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+    }
+
+    #tog:checked{
+        &+#togButton{
+            transform: translate(22px);
+        }
+
+        &~#bg{
+            background-color: lighten($darkCyan, 1%) !important;
+        }
+    }
+
+    #tog:hover~#bg{
+        background-color: lighten($darkCyan, 10%);
+    }
+}
+
+section{
+    @include flex(row, space-between, stretch);
+    padding: 1.5rem 2rem 0rem 4rem;
+    flex-wrap: wrap;
+    
+    div{
+        flex-basis: 50%;
+    }
+    
+    ul{
+        font-size: 13px;
+        color: hsl(225, 20%, 60%);
+        list-style-image: url(images/icon-check.svg);
+    }
+    
+    li{
+        margin-top: 5px;
+        padding-left: 5px;
+    }
+    
+    #cta{
+        @include flex(row, center, center);
+        
+        button{
+            display: block;
+            font-size: 14px;
+            background-color: $darkBlue;
+            color: hsl(226, 100%, 87%);
+            border: none;
+            padding: 15px 45px;
+            border-radius: 23px;
+            outline: none;
+            cursor: pointer;
+            
+            &:hover{
+                background-color: lighten($darkBlue, 10%);
+            }
+            
+            &:active{
+                background-color: darken($darkBlue, 10%);
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 500px){
+    #top{
+        margin-bottom: 1rem;
+        
+        #views{
+            flex-basis: 100%;
+            order: 1;
+            text-align: center;
+        }
+        #price{
+            flex-basis: 100%;
+            order: 3;
+            justify-content: center;
+        }
+        #rangeContainer{
+            order: 2;
+            flex-basis: 100%;
+        }
+    }
+    
+    section{
+        padding: 1.5rem 0rem 0rem 0rem;
+        div{
+            flex-basis: 100%;
+        }
+        
+        #benifits{
+            @include flex(row, center, center);
+            padding-bottom: 2rem;
+            
+            ul{
+                @include flex(column, center, center);
+            }
+        }
+    }
+}

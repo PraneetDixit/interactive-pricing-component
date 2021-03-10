@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+    <title>Frontend Mentor | Interactive pricing component</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <h1>Simple, traffic-based pricing</h1>
+        <h4>Sign-up for our 30-day trial. No credit card required.</h4>
+    </header>
+    <main>
+       <div id="top">
+            <h3 id="views">100K PAGEVIEWS</h3>
+            <h1 id="price">
+                <span id="basePrice">$16.00</span>
+                &nbsp;&nbsp;
+                <span id="period">/ month</span>
+            </h1>
+            <div id="rangeContainer">
+                <input type="range" min="0" max="4" value="2" id="priceRange" name="price">
+            </div>
+        </div>
+        <div id="pricing">
+            <div class="pricingOption">Monthly Billing</div>
+            <div id="toggle">
+                <input type="checkbox" id="tog">
+                <div id="togButton"></div>
+                <div id="bg"></div>
+            </div>
+            <div class="pricingOption">
+                Yearly Billing
+                <span>25% discount</span>
+            </div>
+        </div>
+        <hr>
+        <section>
+            <div id="benifits">
+                <ul>
+                    <li>Unlimited websites</li>
+                    <li>100% data ownership</li>
+                    <li>Email reports</li>
+                </ul>
+            </div>
+            <div id="cta">
+                <button>Start my trial</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        setGradient(document.getElementById("priceRange"));
+    </script>
+</body>
+</html>

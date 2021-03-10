@@ -1,0 +1,285 @@
+/***************************************Color variables*****************************************/
+/*******************************************Flex**********************************************/
+/*****************************************Global*************************************/
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(images/bg-pattern.svg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100% 56.25%;
+  background-color: #fafbff;
+  font-family: "Manrope", sans-serif;
+}
+
+/**************************************Header***********************************/
+header {
+  padding: 4.75rem 0rem 4.75rem 0rem;
+  background-image: url(images/pattern-circles.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+header h1, header h4 {
+  text-align: center;
+}
+header h1 {
+  color: #293356;
+  font-size: 26px;
+  margin-bottom: 7.5px;
+}
+header h4 {
+  color: #7e828e;
+  font-size: 15px;
+}
+
+/**********************************Main content***********************************/
+main {
+  background-color: white;
+  padding: 2rem 0rem;
+  border-radius: 10px;
+  width: min(540px, 90vw);
+  flex-shrink: 0;
+  box-shadow: 0px 4px 15px 5px #eaeefb;
+  margin-bottom: 3rem;
+}
+main hr {
+  border: none;
+  border-top: 1.5px solid #e7e7ec;
+}
+
+/********************************Data*********************************/
+#top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 3rem;
+  flex-wrap: wrap;
+}
+#top #views, #top #price {
+  font-size: 15px;
+  color: #7e828e;
+  flex-basis: 50%;
+  flex-shrink: 0;
+}
+#top #views {
+  letter-spacing: 1px;
+}
+#top #price {
+  display: inline-flex;
+  align-items: center;
+}
+#top #basePrice {
+  font-size: 40px;
+  color: #293356;
+}
+
+/*****************************************Slider********************************************/
+#rangeContainer {
+  padding: 1.75rem 0rem;
+  flex-grow: 1;
+}
+#rangeContainer #priceRange {
+  -webkit-appearance: none;
+  width: 100%;
+  background: #eaeefb;
+  outline: none;
+  border-radius: 4px;
+}
+#rangeContainer #priceRange::-webkit-slider-runnable-track {
+  background: transparent;
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+#rangeContainer #priceRange::-webkit-slider-thumb {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #0ed8c5;
+  background-image: url(images/icon-slider.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14.5px;
+  box-shadow: 0px 13px 28px 5px #a5f3eb;
+}
+#rangeContainer #priceRange::-webkit-slider-thumb:hover {
+  background-color: #28f1de;
+  cursor: grab;
+}
+#rangeContainer #priceRange::-webkit-slider-thumb:active {
+  background-color: #0ba899;
+  cursor: grabbing;
+}
+
+/**********************************Pricing************************************/
+#pricing {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1.5rem 0rem 2rem 0rem;
+}
+#pricing .pricingOption {
+  flex-shrink: 0;
+  width: calc((100% - 40px) / 2);
+  font-size: 13px;
+  color: #a7abb8;
+  padding: 0px 0px 0px 15px;
+}
+#pricing .pricingOption:nth-child(1) {
+  text-align: right;
+  padding: 0px 15px 0px 0px;
+}
+#pricing .pricingOption span {
+  display: inline-block;
+  color: #ff8c66;
+  background-color: #feece7;
+  font-weight: 800;
+  font-size: 11px;
+  padding: 1px 3px 1px 3px;
+  border-radius: 7.5px;
+}
+
+/****************************************Toggle button*********************************************/
+#toggle {
+  width: 40px;
+  background-color: #cdd7ee;
+  height: 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+#toggle #togButton {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: white;
+  top: 3px;
+  transform: translateX(3px);
+  transition: transform 0.25s ease-in-out;
+  z-index: 1;
+}
+#toggle #tog {
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+  position: absolute;
+  cursor: pointer;
+  z-index: 2;
+}
+#toggle #bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+#toggle #tog:checked + #togButton {
+  transform: translate(22px);
+}
+#toggle #tog:checked ~ #bg {
+  background-color: #0eddc9 !important;
+}
+#toggle #tog:hover ~ #bg {
+  background-color: #28f1de;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 1.5rem 2rem 0rem 4rem;
+  flex-wrap: wrap;
+}
+section div {
+  flex-basis: 50%;
+}
+section ul {
+  font-size: 13px;
+  color: #858fad;
+  list-style-image: url(images/icon-check.svg);
+}
+section li {
+  margin-top: 5px;
+  padding-left: 5px;
+}
+section #cta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+section #cta button {
+  display: block;
+  font-size: 14px;
+  background-color: #293356;
+  color: #bdccff;
+  border: none;
+  padding: 15px 45px;
+  border-radius: 23px;
+  outline: none;
+  cursor: pointer;
+}
+section #cta button:hover {
+  background-color: #3a4878;
+}
+section #cta button:active {
+  background-color: #191f34;
+}
+
+@media (max-width: 500px) {
+  #top {
+    margin-bottom: 1rem;
+  }
+  #top #views {
+    flex-basis: 100%;
+    order: 1;
+    text-align: center;
+  }
+  #top #price {
+    flex-basis: 100%;
+    order: 3;
+    justify-content: center;
+  }
+  #top #rangeContainer {
+    order: 2;
+    flex-basis: 100%;
+  }
+
+  section {
+    padding: 1.5rem 0rem 0rem 0rem;
+  }
+  section div {
+    flex-basis: 100%;
+  }
+  section #benifits {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+  section #benifits ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
